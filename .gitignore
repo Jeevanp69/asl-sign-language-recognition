@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# TensorFlow
+*.h5
+*.keras
+
+# Dataset
+dataset/
+dataset_dev/
+dataset_dev2/
+
+# Logs and generated files
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp

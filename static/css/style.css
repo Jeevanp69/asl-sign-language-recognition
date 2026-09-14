@@ -1,0 +1,808 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        Segoe UI,
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(circle at top right,
+            #18243a 0%,
+            #0b1020 40%,
+            #070b14 100%);
+
+    color: #f5f7fb;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: rgba(7, 11, 20, 0.75);
+    backdrop-filter: blur(12px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: rgba(99, 102, 241, 0.18);
+
+    font-size: 23px;
+}
+
+.brand h1 {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.brand p {
+    margin-top: 2px;
+
+    color: #8c96a8;
+
+    font-size: 11px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #aeb8ca;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #54d68b;
+
+    box-shadow:
+        0 0 10px rgba(84, 214, 139, 0.8);
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.container {
+    width: 90%;
+    max-width: 1350px;
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    padding: 58px 0 36px;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border: 1px solid rgba(129, 140, 248, 0.3);
+
+    border-radius: 20px;
+
+    color: #aeb5ff;
+
+    background: rgba(99, 102, 241, 0.1);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+}
+
+.hero h2 {
+    margin-top: 18px;
+
+    max-width: 720px;
+
+    font-size: clamp(38px, 5vw, 64px);
+
+    line-height: 1.02;
+
+    letter-spacing: -2px;
+}
+
+.hero h2 span {
+    color: #818cf8;
+}
+
+.hero p {
+    max-width: 650px;
+
+    margin-top: 18px;
+
+    color: #9ca7ba;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   WORKSPACE
+   ========================================================= */
+
+.workspace {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.7fr) minmax(330px, 0.8fr);
+
+    gap: 22px;
+
+    padding-bottom: 60px;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.camera-card,
+.prediction-card {
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 20px;
+
+    background: rgba(14, 20, 34, 0.82);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CAMERA HEADER
+   ========================================================= */
+
+.card-header {
+    padding: 20px 22px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.card-header h3 {
+    font-size: 16px;
+}
+
+.card-header p {
+    margin-top: 5px;
+
+    color: #778297;
+
+    font-size: 12px;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    color: #67e8a1;
+
+    background: rgba(84, 214, 139, 0.08);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.live-indicator span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #54d68b;
+}
+
+
+/* =========================================================
+   CAMERA
+   ========================================================= */
+
+.camera-container {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 10;
+
+    background: #05070d;
+
+    overflow: hidden;
+}
+
+.camera-container img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.camera-overlay {
+    position: absolute;
+
+    inset: 20px;
+
+    pointer-events: none;
+}
+
+.corner {
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+
+    border-color: rgba(129, 140, 248, 0.8);
+
+    border-style: solid;
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+
+    border-width: 2px 0 0 2px;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+
+    border-width: 2px 2px 0 0;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+
+    border-width: 0 0 2px 2px;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+
+    border-width: 0 2px 2px 0;
+}
+
+
+/* =========================================================
+   CAMERA INFO
+   ========================================================= */
+
+.camera-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.camera-info>div {
+    padding: 14px 20px;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.info-label {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #687388;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.camera-info strong {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   PREDICTION CARD
+   ========================================================= */
+
+.prediction-card {
+    padding: 24px;
+}
+
+.prediction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eyebrow {
+    color: #737f95;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+}
+
+.ai-status {
+    color: #67e8a1;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   PREDICTION DISPLAY
+   ========================================================= */
+
+.prediction-display {
+    margin: 28px 0;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(99, 102, 241, 0.13),
+            rgba(99, 102, 241, 0.03));
+
+    border: 1px solid rgba(129, 140, 248, 0.14);
+}
+
+.prediction-letter {
+    font-size: 100px;
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    color: #a5b4fc;
+
+    text-shadow:
+        0 0 35px rgba(129, 140, 248, 0.25);
+}
+
+.prediction-label {
+    margin-top: 10px;
+
+    color: #7e899d;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   CONFIDENCE
+   ========================================================= */
+
+.confidence-section {
+    margin-bottom: 24px;
+}
+
+.confidence-top {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+
+    color: #8d98aa;
+
+    font-size: 12px;
+}
+
+.confidence-top strong {
+    color: #f5f7fb;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 7px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.progress {
+    height: 100%;
+
+    border-radius: 10px;
+
+    background: #818cf8;
+
+    transition: width 0.25s ease;
+}
+
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.prediction-message {
+    display: flex;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.message-icon {
+    width: 28px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    color: #67e8a1;
+
+    background: rgba(84, 214, 139, 0.1);
+
+    font-size: 13px;
+}
+
+.prediction-message strong {
+    font-size: 12px;
+}
+
+.prediction-message p {
+    margin-top: 4px;
+
+    color: #778297;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ALPHABET
+   ========================================================= */
+
+.alphabet {
+    margin-top: 25px;
+}
+
+.alphabet-title {
+    margin-bottom: 12px;
+
+    color: #737f95;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.letters {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 6px;
+}
+
+.letters span {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 30px;
+
+    border-radius: 7px;
+
+    color: #8994a8;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    font-size: 11px;
+
+    transition: all 0.2s;
+}
+
+.letters span:hover {
+    color: #a5b4fc;
+
+    background: rgba(129, 140, 248, 0.12);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 22px 5%;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    color: #626d80;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .prediction-card {
+        min-height: auto;
+    }
+
+    .hero {
+        padding-top: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .status {
+        display: none;
+    }
+
+    .container {
+        width: calc(100% - 30px);
+    }
+
+    .hero h2 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .camera-info>div {
+        padding: 12px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+
+/* =========================================================
+   RECOGNIZED TEXT
+   ========================================================= */
+
+.recognized-section {
+    margin-top: 20px;
+}
+
+.recognized-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+
+    color: #737f95;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.recognized-header button {
+    border: 0;
+
+    color: #9ca7ba;
+
+    background: transparent;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.recognized-header button:hover {
+    color: #a5b4fc;
+}
+
+.recognized-text {
+    min-height: 70px;
+
+    padding: 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    color: #f5f7fb;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    word-break: break-word;
+}
+
+.text-controls {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-top: 9px;
+}
+
+.text-controls button {
+    padding: 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 9px;
+
+    color: #aeb8ca;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.text-controls button:hover {
+    border-color: rgba(129, 140, 248, 0.35);
+
+    color: #a5b4fc;
+
+    background: rgba(129, 140, 248, 0.08);
+}
+
+/* =========================================================
+   SPEECH BUTTON
+   ========================================================= */
+
+.speak-button {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border: 1px solid rgba(129, 140, 248, 0.3);
+
+    border-radius: 10px;
+
+    color: #f5f7fb;
+
+    background: rgba(129, 140, 248, 0.14);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.speak-button:hover {
+    background: rgba(129, 140, 248, 0.24);
+
+    border-color: rgba(129, 140, 248, 0.5);
+}
+
+.speak-button:disabled {
+    opacity: 0.6;
+
+    cursor: wait;
+}

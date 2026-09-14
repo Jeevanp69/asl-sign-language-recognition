@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ASL Sign Language Recognition</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="brand">
+            <div class="brand-icon">🤟</div>
+
+            <div>
+                <h1>ASL Vision</h1>
+                <p>Sign Language Recognition</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            AI MODEL ONLINE
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <span class="badge">
+                    REAL-TIME COMPUTER VISION
+                </span>
+
+                <h2>
+                    Sign Language
+                    <span>to Text</span>
+                </h2>
+
+                <p>
+                    Use your webcam to perform an ASL alphabet gesture.
+                    The CNN model detects your hand and predicts the
+                    corresponding letter in real time.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="workspace">
+
+            <div class="camera-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h3>Live Camera</h3>
+                        <p>Position your hand inside the camera view</p>
+                    </div>
+
+                    <div class="live-indicator">
+                        <span></span>
+                        LIVE
+                    </div>
+
+                </div>
+
+
+                <div class="camera-container">
+
+                    <img
+                        id="video-feed"
+                        src="{{ url_for('video_feed') }}"
+                        alt="ASL webcam feed"
+                    >
+
+                    <div class="camera-overlay">
+
+                        <div class="corner top-left"></div>
+                        <div class="corner top-right"></div>
+                        <div class="corner bottom-left"></div>
+                        <div class="corner bottom-right"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="camera-info">
+
+                    <div>
+                        <span class="info-label">INPUT</span>
+                        <strong>Webcam</strong>
+                    </div>
+
+                    <div>
+                        <span class="info-label">MODEL</span>
+                        <strong>CNN</strong>
+                    </div>
+
+                    <div>
+                        <span class="info-label">VISION</span>
+                        <strong>MediaPipe</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <aside class="prediction-card">
+
+                <div class="prediction-header">
+                    <span class="eyebrow">
+                        CURRENT PREDICTION
+                    </span>
+
+                    <div class="ai-status">
+                        ● Processing
+                    </div>
+                </div>
+
+
+                <div class="prediction-display">
+
+                    <div class="prediction-letter">
+                        A
+                    </div>
+
+                    <div class="prediction-label">
+                        Detected Letter
+                    </div>
+
+                </div>
+
+
+                <div class="confidence-section">
+
+                    <div class="confidence-top">
+
+                        <span>Confidence</span>
+
+                        <strong id="confidence">
+                            --%
+                        </strong>
+
+                    </div>
+
+                    <div class="progress-bar">
+
+                        <div
+                            id="confidence-bar"
+                            class="progress"
+                            style="width: 0%"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="prediction-message">
+
+                    <div class="message-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Ready for detection</strong>
+
+                        <p>
+                            Hold a clear ASL alphabet gesture
+                            in front of the camera.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="recognized-section">
+
+                    <div class="recognized-header">
+
+                        <span>RECOGNIZED TEXT</span>
+
+                        <button
+                            id="clear-text"
+                            type="button"
+                        >
+                            Clear
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="recognized-text"
+                        class="recognized-text"
+                    >
+                        Your recognized text will appear here...
+                    </div>
+
+                    <div class="text-controls">
+
+                        <button
+                            id="space-text"
+                            type="button"
+                        >
+                            Space
+                        </button>
+
+                        <button
+                            id="backspace-text"
+                            type="button"
+                        >
+                            Backspace
+                        </button>
+
+                    </div>
+
+                    <button
+                        id="speak-text"
+                        class="speak-button"
+                        type="button"
+                    >
+                        🔊 Speak Text
+                    </button>
+
+                </div>
+
+
+                <div class="alphabet">
+
+                    <div class="alphabet-title">
+                        Supported Alphabet
+                    </div>
+
+                    <div class="letters">
+
+                        <span>A</span>
+                        <span>B</span>
+                        <span>C</span>
+                        <span>D</span>
+                        <span>E</span>
+                        <span>F</span>
+                        <span>G</span>
+                        <span>H</span>
+                        <span>I</span>
+                        <span>J</span>
+                        <span>K</span>
+                        <span>L</span>
+                        <span>M</span>
+                        <span>N</span>
+                        <span>O</span>
+                        <span>P</span>
+                        <span>Q</span>
+                        <span>R</span>
+                        <span>S</span>
+                        <span>T</span>
+                        <span>U</span>
+                        <span>V</span>
+                        <span>W</span>
+                        <span>X</span>
+                        <span>Y</span>
+                        <span>Z</span>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            ASL Vision · CNN + MediaPipe + Flask
+        </p>
+
+        <p>
+            26-letter static ASL alphabet recognition
+        </p>
+
+    </footer>
+
+
+    <script
+        src="{{ url_for('static', filename='js/app.js') }}"
+    ></script>
+
+</body>
+
+</html>
