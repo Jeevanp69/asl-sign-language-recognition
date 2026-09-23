@@ -1,0 +1,7 @@
+Flask
+gunicorn
+tensorflow==2.15.1
+mediapipe
+opencv-python-headless
+numpy
+Pillow
