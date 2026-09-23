@@ -2,46 +2,10 @@ import cv2
 import numpy as np
 import tensorflow as tf
 import mediapipe as mp
-import pyttsx3
 
-from flask import Flask, render_template, Response, jsonify, request
+from flask import Flask, render_template, Response, jsonify
 
 app = Flask(__name__)
-# ============================================================
-# TEXT TO SPEECH
-# ============================================================
-
-tts_engine = pyttsx3.init()
-
-tts_engine.setProperty(
-    "rate",
-    150
-)
-
-tts_engine.setProperty(
-    "volume",
-    1.0
-)
-
-
-def speak_text(text):
-
-    if not text.strip():
-        return
-
-    try:
-
-        tts_engine.say(text)
-        tts_engine.runAndWait()
-
-    except Exception as error:
-
-        print(
-            "Speech error:",
-            error
-        )
-
-
 MODEL_PATH = "model/asl_cnn_best.keras"
 
 IMG_SIZE = 64
@@ -433,33 +397,6 @@ def prediction():
     return jsonify({
         **latest_prediction,
         "text": recognized_text
-    })
-
-
-@app.route("/speak", methods=["POST"])
-def speak():
-
-    data = request.get_json(
-        silent=True
-    ) or {}
-
-    text = data.get(
-        "text",
-        ""
-    ).strip()
-
-    if not text:
-
-        return jsonify({
-            "success": False,
-            "message": "No text available"
-        })
-
-    speak_text(text)
-
-    return jsonify({
-        "success": True,
-        "message": "Speech completed"
     })
 
 
